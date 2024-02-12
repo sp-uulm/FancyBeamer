@@ -113,24 +113,21 @@
 % ---------------------------------------------
 % frame layout
 % ---------------------------------------------
-% [options for includegraphics]{logoname}
-\newcommand*\institutelogo[2][]{\def\@institutelogo{\includegraphics[height=4.5ex,#1]{#2}}}
-\newcommand*\clearinstitutelogo{\def\@institutelogo{}}
-\newcommand*\universitylogo[2][]{\def\@universitylogo{\includegraphics[height=4.5ex,#1]{#2}}}
-\newcommand*\clearuniversitylogo{\def\@universitylogo{}}
-\def\@mainlogo{\@institutelogo\hskip0pt plus 1filll\relax\@universitylogo}
+
+% we use this flag as a helper to toggle extra behavior when constructing the logos
 \newif\iffancy@logos@first@
-\newcommand*\fancylogos[2][]{\def\@mainlogo{%
+
+% [options for includegraphics, shared for all figures]{logonameA, logonameB, ...}
+\newcommand*\fancylogos[2][]{\def\fancy@logoline{%
     \fancy@logos@first@true
+    % we iterate over all images given in the comma-separated list
     \@for\@image:={#2}\do{%
-        \iffancy@logos@first@\fancy@logos@first@false\else \hskip0pt plus 1filll\fi
+        \iffancy@logos@first@\fancy@logos@first@false\else\hskip0pt plus 1filll\fi
         \ifthenelse{\equal{\@image}{}}{}{%
             \includegraphics[height=4.5ex,#1]{\@image}%
         }%
     }%
 }}
-\clearuniversitylogo
-\clearinstitutelogo
 
 \newcommand{\@createtitleslide}{
     {
@@ -152,7 +149,7 @@
         \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,left]{logobox}
             \vspace{-1ex}%
             \hspace{10pt}
-            \@mainlogo
+            \fancy@logoline
             \hspace{10pt}
         \end{beamercolorbox}%
     \end{frame}
