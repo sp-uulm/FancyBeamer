@@ -375,7 +375,7 @@
 \newdimen\fancy@cols@height      % holds the target height of the columns environment (negative for auto)
 
 \def\fancy@cols@widths@max{100}  % the maximum number to be used for widths
-% with this, we define the keys that are usable within the optional argument of '\mycolumns'
+% with this, we define the keys that are usable within the optional argument of '\fancycolumns'
 
 \def\@fancy@animation@none{\fancy@cols@animation{0}{-}}
 \def\@fancy@animation@keep{\fancy@cols@animation{1}{-}}
@@ -432,7 +432,7 @@
 }
 
 % allows to user to overwrite the defaults
-\newcommand\setmycolumnsdefault[1]{\pgfqkeys{/fancy columns}{@defaults/.append style={#1}}}
+\newcommand\setfancycolumnsdefault[1]{\pgfqkeys{/fancy columns}{@defaults/.append style={#1}}}
 
 % we need two counters
 % 'fancy@cols@current' holds the column we are currently in (starts with 0)
@@ -454,13 +454,13 @@
     % due to the way beamer calculates the columns, we remove the margin from the width
     % see etoolbox for an explanation of '\dimdef' (basically allows for calculations with dimensions)
     \dimdef{\fancy@cols@total@width}{\linewidth-\fancy@cols@margin*\fancy@cols@count+\fancy@cols@margin}%
-    % activate(/overwrite) the '\mynextcolumn' macro within the environment
-    \let\mynextcolumn\fancy@mynextcolumn
+    % activate(/overwrite) the '\nextcolumn' macro within the environment
+    \let\nextcolumn\fancy@nextcolumn
     % a rather complicated macro, which sets/calculates the widths for all columns
     \fancy@cols@initialize@widths
     % issue the first column
     % NOTE: we don't guard if 'columns' is below 1 (e.g. we always assume, there is 1 column)
-    \mynextcolumn
+    \nextcolumn
 }
 
 % a temporary counter so we do not need to use low-level tex counters (like @tempcnta)
@@ -546,8 +546,8 @@
     \fi
 }
 
-% this is the macro, that will become '\mynextcolumn' within the 'mycolumns' environment
-\newcommand\fancy@mynextcolumn{%
+% this is the macro, that will become '\nextcolumn' within the 'fancycolumns' environment
+\newcommand\fancy@nextcolumn{%
     % issue a warning if too many columns
     \ifnum\value{fancy@cols@current}<\fancy@cols@count\else
         % this mus be an error, we calculate widths etc. only for the given columns
@@ -583,7 +583,7 @@
 }
 
 % #1: arguments like 'columns=3, keep, reverse'
-\newenvironment{mycolumns}[1][]{\begingroup
+\newenvironment{fancycolumns}[1][]{\begingroup
 \pgfqkeys{/fancy columns}{@defaults, #1}%
 \edef\fancy@previous@fancy@cols{\thefancy@cols@current}% store the current column counter
 \ifdim\fancy@cols@height<0pt\begin{minipage}{\fancy@cols@target@width}\else\begin{minipage}[\fancy@cols@valign][\fancy@cols@height]{\fancy@cols@target@width}\fi%
