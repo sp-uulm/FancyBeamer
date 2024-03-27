@@ -132,6 +132,7 @@
     }%
 }}
 
+\def\fancy@titlepage@margin{20pt}
 \newcommand{\@createtitleslide}{
     {
     \ifx \fancytitlepicture \empty \else \usebackgroundtemplate{\pic[trim=0 0 0 \fancytitlepictureoffset,clip,width=\paperwidth]{\fancytitlepicture}} \fi
@@ -141,19 +142,18 @@
             \LARGE\textbf{\inserttitle}\hspace*{20pt}
         \end{beamercolorbox}%
         \nointerlineskip%
-        \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{subtitlebox}
+        \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right,rightskip=\fancy@titlepage@margin]{subtitlebox}
             \small
             \ifx \insertsubtitle \empty \else \insertsubtitle\ $\vert$ \fi
-            \insertauthor\
-            \ifx \insertdate \empty \else $\vert$ \insertdate \fi
-            \hspace*{20pt}
+            \makeatletter
+            \ifx \beamer@shortauthor \empty \else \insertauthor\ $\vert$ \fi
+            \makeatother
+            \ifx \insertdate \empty \else \insertdate \fi
         \end{beamercolorbox}%
         \nointerlineskip
-        \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,left]{logobox}
+        \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,leftskip=\fancy@titlepage@margin,rightskip=\fancy@titlepage@margin]{logobox}
             \vspace{-1ex}%
-            \hspace{10pt}
             \fancy@logoline
-            \hspace{10pt}
         \end{beamercolorbox}%
     \end{frame}
     }
