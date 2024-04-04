@@ -121,6 +121,7 @@
 \newif\iffancy@logos@first@
 
 % [options for includegraphics, shared for all figures]{logonameA, logonameB, ...}
+\def\fancy@logoline{}
 \newcommand*\fancylogos[2][]{\def\fancy@logoline{%
     \fancy@logos@first@true
     % we iterate over all images given in the comma-separated list
@@ -707,7 +708,7 @@
 	\CatchFileDef\myurl{#1}{\catcode`\#=12\catcode`\%=12\endlinechar=-1}%
 	\expandafter\href\expandafter{\myurl}}
 \newcommand{\pic}[2][]{%
-    \IfFileExists{#2.txt}{\hreffile{#2.txt}}{}{\includegraphics[#1]{#2}}
+    \IfFileExists{#2.txt}{\hreffile{#2.txt}}{}{\adjincludegraphics[#1]{#2}}
 }
 \newcommand{\picDark}[2][]{\pic[#1]{#2}}
 \ifdarkmode

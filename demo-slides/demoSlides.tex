@@ -149,11 +149,23 @@
 \end{frame}
 }
 
-\subsection{Adding Links to Pictures Automatically}
+\subsection{Advanced Management of Pictures}
 \begin{frame}{\insertsubsection}
-	Using the command \texttt{\textbackslash pic\{filename\}} a picture can be included. In order to automatically add a (source) link to the picture, the link simply has to be stored in a txt-file with the same filename:
-
-	\centering\pic[width=0.5\textwidth]{example-image} % omit file extension of the image picture
+	\begin{mycolumns}[t]
+		\begin{example}{\texttt{\textbackslash pic} command}
+			\centering\pic[width=0.5\textwidth,trim={.2\width} {.2\height} {.2\width} {.2\height},clip]{example-image}
+		\end{example}
+		\begin{note}{Explanation}
+			Using the command \texttt{\textbackslash pic\{filename\}} a picture can be included. It works like \texttt{\textbackslash adjincludegraphics} and therefore supports advanced options like \texttt{trim}.
+		\end{note}
+	\mynextcolumn
+		\begin{example}{Automatic Links}
+			\centering\pic[width=0.5\textwidth]{example-image} % omit file extension of the image picture
+		\end{example}
+		\begin{note}{Explanation}
+			In order to automatically add a (source) link to the picture, the link simply has to be stored in a txt-file with the same filename.
+		\end{note}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Automatic Dark-Mode for Pictures}
