@@ -81,13 +81,13 @@ A [git submodule][Git Submodules] is a repository embedded into another and allo
 3. (If necessary) If you want to update the template, you can use the following command:
 
    ```shell
-   git submodule update --remote --merge <path/to/the/submodule>
+   $ git submodule update --remote --merge <path/to/the/submodule>
    ```
 
    For example:
 
    ```shell
-   git submodule update --remote --merge fancy-beamer-uulm
+   $ git submodule update --remote --merge fancy-beamer-uulm
    ```
 
    Omitting the path will update all your submodules.
