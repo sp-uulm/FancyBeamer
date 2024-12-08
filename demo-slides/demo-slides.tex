@@ -8,20 +8,25 @@
 	%uniqueslidenumber, % will uniquely identify pages with overlays by a little suffix
 	%darkmode, % switch to dark mode (do not use for presentation with a projector)
 ]{beamer}
-\usepackage{../fancybeamer} % use the fancy beamer package
+
+% This line of code just tries to find the fancybeamer package automatically. if you know the path to the fancybeamer package, you can replace the following line with \def\templatepath{path/to/fancybeamer/}
+\IfFileExists{../fancyuulm.sty}{\def\templatepath{../}}{\IfFileExists{../fancy-beamer-uulm/fancyuulm.sty}{\def\templatepath{../fancy-beamer-uulm/}}{\IfFileExists{./fancy-beamer-uulm/fancyuulm.sty}{\def\templatepath{./fancy-beamer-uulm/}}{\def\templatepath{}}}}
+\usepackage{\templatepath fancybeamer} % use the fancy beamer package
+\usepackage{\templatepath fancyuulm} % use the uulm colorpalette
 
 %\usepackage[ngerman]{babel} % use this line for slides in German
 
 %\includeonlyframes{current} % default mechanism of beamer to include only labeled frames, can be used for debugging or drafting
 
-% \AtEndPreamble{\setpaths{{pics/}{../pics/}}} % specify custom paths to your pictures
+% set paths for logos
+\setpaths{{\templatepath logos/}}
 
 \title[Short Title]{This is the Long Title} % short title is used for the slide footer but optional
 \subtitle[Short Subtitle]{This is the Long Subtitle} % subtitles are optional at all
 \author[Short Author]{Long Author} % short author title is used for the slide footer but optional
 \date{\today} % use a particular date here if needed
 
-\fancylogos{example-image-a,example-image-b,example-image-c} % define logos that are spread evenly across the bottom of the title slide
+\fancylogos{sp,uulm} % define logos that are spread evenly across the bottom of the title slide
 % \fancylogos{example-image-a} % just one logo is possible as well, e.g., the logo of your university
 % \fancylogos{,example-image-a} % you can use empty entries for a more fine-tuned alignment
 
