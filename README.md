@@ -8,7 +8,7 @@ Additionally, [`logos/`](logos/) contains the official logo of Ulm University as
 
 Relevant files include:
 
-* [`fancybeamer.sty`](fancybeamer.sty): The main style file for the [FancyBeamer template](https://github.com/SEatUPB/FancyBeamer) template..
+* [`fancybeamer.sty`](fancybeamer.sty): The main style file for the [FancyBeamer template](https://github.com/SEatUPB/FancyBeamer) template.
 * [`fancyuulm.sty`](fancyuulm.sty): The style file for the Ulm University specific color palette.
 * [`logos/`](logos/): Contains the official logo of Ulm University and the logo of the Institute of Software Engineering and Programming Languages.
 
